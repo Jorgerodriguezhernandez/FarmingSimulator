@@ -12,7 +12,7 @@ public class Huerto {
     }
 
 
-    public synchronized void Cultivar( String verdura) throws InterruptedException{
+    public synchronized void cultivar( String verdura) throws InterruptedException{
         while (full){
             wait();
         }
@@ -21,6 +21,17 @@ public class Huerto {
         empty = false;
         full = top >= buff.length;
         notifyAll();
+    }
+    public synchronized String comprar() throws InterruptedException{
+        while (empty){
+            wait();
+        }
+        String verdura = buff[top-1];
+        top = top - 1;
+        full = false;
+        empty = top <= 0;
+        notifyAll();
+        return verdura;
     }
 
 

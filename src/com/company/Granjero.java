@@ -32,7 +32,7 @@ public class Granjero extends Thread{
         try {
             for (int i = 0; i < unidadesProducidas; i++) {
                 verdGen = verduras[(int) (Math.random()* verduras.length)];
-                buffer.Cultivar(verdGen);
+                buffer.cultivar(verdGen);
                 System.out.println("El productor planto: " + verdGen);
                 sleep((int) (Math.random() * this.maxTiempoEspera));
             }
